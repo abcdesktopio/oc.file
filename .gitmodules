@@ -1,0 +1,4 @@
+[submodule "composer/node/file-service"]
+	path = composer/node/file-service
+	url = https://github.com/abcdesktopio/file-service.git
+	branch = main
