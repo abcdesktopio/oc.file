@@ -65,19 +65,18 @@ ENV TERM linux
 # apt install iproute2 install ip command
 # install supervisor
 RUN apt-get update && apt-get install -y  --no-install-recommends      \
-	    supervisor		\
 	    curl			\
-	    gpg-agent		\
-      software-properties-common \
+	    gpg-agent			\
+      software-properties-common 	\
 	    gnupg			\
-  && apt-get clean	\
+  && apt-get clean			\
 	&& rm -rf /var/lib/apt/lists/*	
 
 
 
 # this package nodejs include npm 
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - \ 
-	&& apt-get update && 				\
+    &&  apt-get update && 				\
 	apt-get install -y --no-install-recommends	\
         	nodejs					\
     && apt-get clean \
@@ -92,7 +91,7 @@ ENV BUSER balloon
 # RUN adduser --disabled-password --gecos '' $BUSER
 # RUN id -u $BUSER &>/dev/null || 
 RUN groupadd --gid 4096 $BUSER
-RUN useradd --create-home --shell /bin/bash --uid 4096 -g $BUSER --groups lpadmin $BUSER
+RUN useradd --create-home --shell /bin/bash --uid 4096 -g $BUSER --groups $BUSER
 # create an ubuntu user
 # PASS=`pwgen -c -n -1 10`
 # PASS=ballon
@@ -103,10 +102,9 @@ RUN echo "balloon:lmdpocpetit" | chpasswd $BUSER
 RUN echo `date` > /etc/build.date
 
 # LOG AND PID SECTION
-RUN mkdir -p 	/var/log/desktop                       \
-        	/var/run/desktop                           \
+RUN mkdir -p 	/var/log/desktop	\
+        	/var/run/desktop	\
         	/composer/run
-COPY etc /etc
 
 CMD /docker-entrypoint.sh
 
