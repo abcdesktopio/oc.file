@@ -91,7 +91,7 @@ ENV BUSER balloon
 # RUN adduser --disabled-password --gecos '' $BUSER
 # RUN id -u $BUSER &>/dev/null || 
 RUN groupadd --gid 4096 $BUSER
-RUN useradd --create-home --shell /bin/bash --uid 4096 -g $BUSER --groups $BUSER
+RUN useradd --create-home --shell /bin/bash --uid 4096 -g $BUSER
 # create an ubuntu user
 # PASS=`pwgen -c -n -1 10`
 # PASS=ballon
