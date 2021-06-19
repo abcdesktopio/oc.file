@@ -2,3 +2,7 @@
 	path = composer/node/file-service
 	url = https://github.com/abcdesktopio/file-service.git
 	branch = main
+[submodule "composer/node/common-libraries"]
+	path = composer/node/common-libraries
+	url = https://github.com/abcdesktopio/oc.user.libraries.git
+	branch = main
