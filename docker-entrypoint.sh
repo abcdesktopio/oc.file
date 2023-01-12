@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 CONTAINER_IP_ADDR=$(hostname -i)
 echo "Container local ip addr is $CONTAINER_IP_ADDR"
