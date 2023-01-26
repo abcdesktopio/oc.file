@@ -8,9 +8,9 @@ COPY docker-entrypoint.sh /docker-entrypoint.sh
 
 # Add nodejs service
 WORKDIR /composer/node/common-libraries
-RUN npm install --production
+RUN yarn install --production
 WORKDIR /composer/node/file-service
-RUN npm install --production
+RUN yarn install --production
 
 
 # create default log pid directory
