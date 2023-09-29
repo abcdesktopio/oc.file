@@ -1,6 +1,3 @@
-# defaul TAG is dev
-ARG TAG=dev
-
 FROM node:current-alpine3.16
 
 COPY /composer  /composer
