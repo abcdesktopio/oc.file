@@ -20,13 +20,13 @@ jobs:
         with:
           repository: 'abcdesktopio/file-service'
           ref: 'main'
-          path: '/composer/node/file-service'
+          path: 'composer/node/file-service'
       - name: Checkout repository oc.user.libraries to common-libraries
         uses: actions/checkout@v4
         with:
           repository: 'abcdesktopio/oc.user.libraries'
           ref: 'main'
-          path: '/composer/node/common-libraries'
+          path: 'composer/node/common-libraries'
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
