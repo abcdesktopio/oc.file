@@ -18,13 +18,13 @@ jobs:
       - name: Checkout repository file-service
         uses: actions/checkout@v4
         with:
-          repository: 'https://github.com/abcdesktopio/file-service'
+          repository: 'abcdesktopio/file-service'
           ref: 'main'
           path: 'composer/node'
       - name: Checkout repository common-libraries
         uses: actions/checkout@v4
         with:
-          repository: 'https://github.com/abcdesktopio/common-libraries'
+          repository: 'abcdesktopio/common-libraries'
           ref: 'main'
           path: 'composer/node'
       - name: Set up QEMU
