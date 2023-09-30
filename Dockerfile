@@ -8,8 +8,7 @@ RUN cd /composer/node/common-libraries && npm install --omit=dev \
     cd /composer/node/file-service     && npm install --omit=dev
 
 # create default log pid directory
-RUN mkdir -p 	/var/log/desktop	\
-        	/var/run/desktop	\
-        	/composer/run
+RUN mkdir -p /var/log/desktop /var/run/desktop /composer/run
+
 WORKDIR /
 CMD /docker-entrypoint.sh
