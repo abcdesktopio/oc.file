@@ -4,8 +4,8 @@ COPY /composer  /composer
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
 # Add nodejs file-service and dep
-RUN cd /composer/node/common-libraries && npm install --omit=dev && &&  npm audit fix \
-    cd /composer/node/file-service     && npm install --omit=dev && &&  npm audit fix
+RUN cd /composer/node/common-libraries && npm install --omit=dev \
+    cd /composer/node/file-service     && npm install --omit=dev
 
 # create default log pid directory
 RUN mkdir -p 	/var/log/desktop	\
