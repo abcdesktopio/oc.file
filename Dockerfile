@@ -1,12 +1,11 @@
-FROM node:current-alpine3.16
+FROM node:alpine3.18
 
 COPY /composer  /composer
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
 # Add nodejs file-service and dep
 
-RUN npm install -g yarn && \
-    cd /composer/node/common-libraries && yarn install production=true \
+RUN cd /composer/node/common-libraries && yarn install production=true \
     cd /composer/node/file-service     && yarn install production=true
 
 # create default log pid directory
