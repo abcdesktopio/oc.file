@@ -4,9 +4,10 @@ COPY /composer  /composer
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
 # Add nodejs file-service and dep
-
-RUN cd /composer/node/common-libraries && yarn --production=true \
-    cd /composer/node/file-service     && yarn --production=true
+WORKDIR /composer/node/file-service
+RUN yarn --production=true
+WORKDIR /composer/node/common-libraries
+RUN yarn --production=true
 
 # create default log pid directory
 RUN mkdir -p /var/log/desktop /var/run/desktop /composer/run
