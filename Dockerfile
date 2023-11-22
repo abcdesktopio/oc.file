@@ -2,6 +2,7 @@ FROM node:alpine3.18
 ARG ABCDESKTOP_LOCALACCOUNT_DIR=/var/secrets/abcdesktop/localaccount
 ENV ABCDESKTOP_LOCALACCOUNT_DIR=$ABCDESKTOP_LOCALACCOUNT_DIR
 
+RUN apk add busybox
 # copy /composer/node/file-service
 # copy /composer/node/common-libraries
 COPY /composer  /composer
