@@ -21,7 +21,6 @@ RUN addgroup -g 4096 balloon
 RUN adduser -D -u 4096 -G balloon balloon
 # end of for backward compatibility only
 
-
 # change passwd shadow group gshadow
 RUN mkdir -p $ABCDESKTOP_LOCALACCOUNT_DIR && \
     for f in passwd shadow group gshadow ; do if [ -f /etc/$f ] ; then  cp /etc/$f $ABCDESKTOP_LOCALACCOUNT_DIR ; rm -f /etc/$f; ln -s $ABCDESKTOP_LOCALACCOUNT_DIR/$f /etc/$f; fi; done
