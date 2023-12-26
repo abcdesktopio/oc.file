@@ -6,6 +6,7 @@ export CONTAINER_IP_ADDR
 
 # only one process to run
 # do not need supervisord
-# start command
-node /composer/node/file-service/file-service.js
+# to start command
+cd /composer/node/file-service
+node file-service.js
 
