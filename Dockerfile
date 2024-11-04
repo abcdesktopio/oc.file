@@ -1,10 +1,18 @@
 FROM node:alpine3.20
 ARG ABCDESKTOP_LOCALACCOUNT_DIR=/etc/localaccount
 ENV ABCDESKTOP_LOCALACCOUNT_DIR=$ABCDESKTOP_LOCALACCOUNT_DIR
+# default branch
+ARG BRANCH=3.3
+ENV BRANCH=$BRANCH
 
-RUN apk add busybox
-# copy composer
-COPY /composer  /composer
+RUN apk add --no-cache busybox
+
+# copy file-service repo to /composer/node
+RUN apk add --no-cache git && \
+    mkdir -p /composer/node/file-service && \
+    git clone -b $BRANCH https://github.com/abcdesktopio/file-service.git /composer/node/file-service && \
+    apk del --no-cache git 
+
 # Add nodejs file-service and dep
 WORKDIR /composer/node/file-service
 RUN yarn --production=true
