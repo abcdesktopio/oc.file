@@ -1,4 +1,4 @@
-name: Update oc.nginx
+name: Update oc.filer
 
 on:
   repository_dispatch:
