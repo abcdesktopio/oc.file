@@ -1,12 +1,10 @@
-name: Update oc.nginx
+name: Update oc.filer
 
 on:
   repository_dispatch:
     types: dispatch-from-filer-service
   push:
-    branches:
-      - main
-      - '3.1'
+  
 env:
     imagetag: "${{ github.event.client_payload.ref || github.ref_name }}"
       
@@ -14,20 +12,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Dump image tag ${{ env.imagetag }}
+        run: echo ${{ env.imagetag }}
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Checkout repository file-service
-        uses: actions/checkout@v4
-        with:
-          repository: 'abcdesktopio/file-service'
-          ref: 'main'
-          path: 'composer/node/file-service'
-      - name: Checkout repository oc.user.libraries to common-libraries
-        uses: actions/checkout@v4
-        with:
-          repository: 'abcdesktopio/oc.user.libraries'
-          ref: 'main'
-          path: 'composer/node/common-libraries'
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
@@ -44,3 +32,6 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: abcdesktopio/oc.filer:${{ env.imagetag }}
+          build-args: |
+            ABCDESKTOP_LOCALACCOUNT_DIR=/etc/localaccount
+            BRANCH=${{ env.imagetag }}
