@@ -1,16 +1,12 @@
-FROM node:alpine3.18
-ARG ABCDESKTOP_LOCALACCOUNT_DIR=/var/secrets/abcdesktop/localaccount
+FROM node:alpine3.20
+ARG ABCDESKTOP_LOCALACCOUNT_DIR=/etc/localaccount
 ENV ABCDESKTOP_LOCALACCOUNT_DIR=$ABCDESKTOP_LOCALACCOUNT_DIR
 
 RUN apk add busybox
-# copy /composer/node/file-service
-# copy /composer/node/common-libraries
+# copy composer
 COPY /composer  /composer
-
 # Add nodejs file-service and dep
 WORKDIR /composer/node/file-service
-RUN yarn --production=true
-WORKDIR /composer/node/common-libraries
 RUN yarn --production=true
 
 # create default log pid directory
@@ -28,6 +24,7 @@ RUN mkdir -p $ABCDESKTOP_LOCALACCOUNT_DIR && \
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 WORKDIR /
 CMD /docker-entrypoint.sh
+# USER only for backward compatibility only
 USER balloon
 
 
